@@ -14,6 +14,18 @@ export async function getAction() {
       {
         name: "Check the current git branch",
         value: "branch"
+      },
+      {
+        name: "Create a new branch",
+        value: "create branch"
+      },
+      {
+        name: "Change the current branch",
+        value: "change branch"
+      },
+      {
+        name: "Delete a branch",
+        value: "delete branch"
       }
     ]
   })
@@ -61,6 +73,36 @@ export async function handleAnswer(answer) {
       break
     case "branch":
       spawn("git", ["branch"], { stdio: "inherit" })
+      break
+    case "create branch":
+      const { branch } = await inquirer.prompt({
+        name: "branch",
+        type: "input",
+        message: `What is the name of the new branch?`
+      })
+      spawn("git", ["checkout", "-b", branch], { stdio: "inherit" })
+      break
+    case "change branch":
+      console.log("Available branches:")
+      spawn("git", ["branch"], { stdio: "inherit" }).on("close", async () => {
+        const { branch } = await inquirer.prompt({
+          name: "branch",
+          type: "input",
+          message: `What is the name of the branch you want to change to?`
+        })
+        spawn("git", ["checkout", branch], { stdio: "inherit" })
+      })
+      break
+    case "delete branch":
+      console.log("Available branches:")
+      spawn("git", ["branch"], { stdio: "inherit" }).on("close", async () => {
+        const { branch } = await inquirer.prompt({
+          name: "branch",
+          type: "input",
+          message: `What is the name of the branch you want to delete?`
+        })
+        spawn("git", ["branch", "-D", branch], { stdio: "inherit" })
+      })
       break
     case "vite":
       spawn("npm", ["create", "vite@latest"], { stdio: "inherit", shell: true })

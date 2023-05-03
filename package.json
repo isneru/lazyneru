@@ -1,21 +1,22 @@
 {
   "name": "lazyneru",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.1",
+  "description": "a CLI because i have the memory of a worm",
   "main": "index.js",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/isneru/lazyneru"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "neru",
   "bin": "./index.js",
   "dependencies": {
-    "chalk": "^5.2.0",
-    "chalk-animation": "^2.0.3",
     "figlet": "^1.6.0",
     "gradient-string": "^2.0.2",
-    "inquirer": "^9.2.0",
-    "nanospinner": "^1.1.0"
+    "inquirer": "^9.2.0"
   }
 }
