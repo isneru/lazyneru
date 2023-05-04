@@ -26,6 +26,10 @@ export async function getAction() {
       {
         name: "Delete a branch",
         value: "delete branch"
+      },
+      {
+        name: "Commit changes",
+        value: "commit"
       }
     ]
   })
@@ -103,6 +107,30 @@ export async function handleAnswer(answer) {
         })
         spawn("git", ["branch", "-D", branch], { stdio: "inherit" })
       })
+      break
+    case "commit":
+      spawn("git", ["add", "-A"], { stdio: "inherit" }).on(
+        "close",
+        async () => {
+          const { message } = await inquirer.prompt({
+            name: "message",
+            type: "input",
+            message: `What is the commit message?`
+          })
+          spawn("git", ["commit", "-m", `"${message}"`], {
+            stdio: "inherit"
+          }).on("close", async () => {
+            const { push } = await inquirer.prompt({
+              name: "push",
+              type: "confirm",
+              message: `Do you want to push the changes?`
+            })
+            if (push) {
+              spawn("git", ["push"], { stdio: "inherit" })
+            }
+          })
+        }
+      )
       break
     case "vite":
       spawn("npm", ["create", "vite@latest"], { stdio: "inherit", shell: true })
