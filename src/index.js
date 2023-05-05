@@ -2,10 +2,9 @@
 
 import figlet from "figlet"
 import gradient from "gradient-string"
+import { getAction, handleAnswer } from "./utils/steps.js"
 
-import { getAction, handleAnswer } from "./steps.js"
-
-async function start() {
+function start() {
   figlet("lazy neru", async (_, data) => {
     console.log(gradient.retro.multiline(data))
     const action = await getAction()
@@ -14,4 +13,4 @@ async function start() {
   })
 }
 
-await start()
+start()

@@ -2,18 +2,18 @@
   "name": "lazyneru",
   "version": "1.0.2",
   "description": "a CLI because i have the memory of a worm",
-  "main": "index.js",
+  "main": "./src/index.js",
   "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/isneru/lazyneru"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node ./src/index.js"
   },
   "keywords": [],
   "author": "neru",
-  "bin": "./index.js",
+  "bin": "./src/index.js",
   "dependencies": {
     "figlet": "^1.6.0",
     "gradient-string": "^2.0.2",
