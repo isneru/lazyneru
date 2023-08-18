@@ -27,23 +27,7 @@ export const actionChoices = [
     value: "new project"
   },
   {
-    name: "Check the current git branch",
-    value: "branch"
-  },
-  {
-    name: "Create a new branch",
-    value: "create branch"
-  },
-  {
-    name: "Change the current branch",
-    value: "change branch"
-  },
-  {
-    name: "Delete a branch",
-    value: "delete branch"
-  },
-  {
-    name: "Commit changes",
-    value: "commit"
+    name: "Tunnel to localhost",
+    value: "tunnel"
   }
 ]
