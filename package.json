@@ -1,6 +1,6 @@
 {
   "name": "lazyneru",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "a CLI because i have the memory of a worm",
   "main": "./src/index.js",
   "type": "module",
